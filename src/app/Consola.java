@@ -52,10 +52,13 @@ public class Consola implements IEntradaSalida {
 			try {
 				auxResultado = leerTexto("");
 				auxResultado.replace('.', ',');
+				resultado = Double.valueOf(auxResultado);
 				hayError = false;
 			} catch (Exception e) {
+
 				System.err.println("Error: Introduce un número decimal válido.");
-				sc.next();
+				sc.nextLine();
+
 			}
 		} while (hayError);
 		return resultado;
