@@ -1,5 +1,7 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GestorEmpleados {
@@ -13,6 +15,18 @@ public class GestorEmpleados {
 
 	public void ejecutar() {
 
+		int opcion = 0;
+		do {
+			consola.mostrarMenu();
+			opcion = consola.leerEntero("Introduce una opción :");
+			switch (opcion) {
+			case 1 -> contratarEmpleado();
+			case 2 -> listarTodos();
+			case 3 -> listarPorFiltro();
+			case 4 -> consola.imprimirLinea("Hasta pronto!!");
+			default -> opcion = consola.leerEntero("Introduce una opción :");
+			}
+		} while (opcion != 4);
 	}
 
 	private void contratarEmpleado() {
@@ -21,10 +35,11 @@ public class GestorEmpleados {
 		double sueldoBase, ventas;
 		int opcion, categoria;
 		do {
-			opcion = consola.leerEntero("¿Qué tipo de empleado quieres contratar?");
+
 			consola.imprimirLinea("1 - Técnico");
 			consola.imprimirLinea("2 - Comercial");
-		} while (opcion != 1 || opcion != 2);
+			opcion = consola.leerEntero("¿Qué tipo de empleado quieres contratar?");
+		} while (!(opcion > 0 && opcion < 3));
 		nombre = consola.leerTexto("Introduce el nombre del empleado");
 		apellidos = consola.leerTexto("Introduce los apellidos del empleado");
 		dni = consola.leerTexto("Introduce el DNI del empleado");
@@ -35,25 +50,35 @@ public class GestorEmpleados {
 			empleado = new Tecnico(dni, nombre, apellidos, sueldoBase, categoria);
 		} else if (opcion == 2) {
 			ventas = consola.leerImporte("Introduce el importe de las ventas del empleado");
-			empleado = new Comercial(dni, nombre, apellidos, sueldoBase, ventas);
+			empleado = new Comercial(dni, nombre, apellidos, sueldoBase);
+			((Comercial) empleado).setVentas(ventas);
 		}
 		plantilla.agregarEmpleado(empleado);
 	}
 
 	private void listarTodos() {
-
+		List<Empleado> auxEmpleados = new ArrayList<>();
+		auxEmpleados = plantilla.getEmpleadosPorNombre("");
+		ordenarPorNombre(auxEmpleados);
+		listarEmpleados(auxEmpleados);
 	}
 
 	private void listarPorFiltro() {
+		String filtro;
+		filtro = consola.leerTexto("¿Nombre o apellido por el que buscar?");
+		listarEmpleados(plantilla.getEmpleadosPorNombre(filtro));
 
 	}
 
-	private void listarEmpleados() {
-
+	private void listarEmpleados(List<Empleado> empleados) {
+		for (int i = 0; i < empleados.size(); i++) {
+			consola.imprimirLinea("N - " + empleados.get(i).getNombre() + " Apellidos : "
+					+ empleados.get(i).getApellidos() + " Sueldo : " + empleados.get(i).getSueldo() + "€");
+		}
 	}
 
 	private void ordenarPorNombre(List<Empleado> empleados) {
-
+		empleados.sort(Comparator.comparing(Empleado::getNombre));
 	}
 
 }

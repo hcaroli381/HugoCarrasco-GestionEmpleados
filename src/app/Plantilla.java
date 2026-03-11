@@ -21,10 +21,13 @@ public class Plantilla {
 					|| empleados.get(i).getApellidos().trim().equalsIgnoreCase(filtroNombre)) {
 				auxEmpleados.add(empleados.get(i));
 			}
-			if (filtroNombre.equals("")) {
-				return empleados;
-			}
+
 		}
-		return auxEmpleados;
+		if (filtroNombre.equals("")) {
+			return empleados;
+		} else {
+			return auxEmpleados;
+		}
+
 	}
 }

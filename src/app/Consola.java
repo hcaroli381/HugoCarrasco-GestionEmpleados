@@ -21,6 +21,7 @@ public class Consola implements IEntradaSalida {
 
 	@Override
 	public String leerTexto(String mensaje) {
+		imprimirLinea(mensaje);
 		return sc.next();
 	}
 
@@ -28,6 +29,7 @@ public class Consola implements IEntradaSalida {
 	public int leerEntero(String mensaje) {
 		int resultado = 0;
 		boolean hayError = true;
+		imprimir(mensaje);
 		do {
 			try {
 				resultado = sc.nextInt();
@@ -42,7 +44,7 @@ public class Consola implements IEntradaSalida {
 
 	@Override
 	public double leerImporte(String mensaje) {
-
+		imprimirLinea(mensaje);
 		return sc.nextDouble();
 	}
 
