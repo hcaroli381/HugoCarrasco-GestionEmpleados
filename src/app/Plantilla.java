@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Plantilla {
@@ -15,10 +16,11 @@ public class Plantilla {
 	}
 
 	public List<Empleado> getEmpleadosPorNombre(String filtroNombre) {
+
 		List<Empleado> auxEmpleados = new ArrayList<>();
 		for (int i = 0; i < empleados.size(); i++) {
-			if (empleados.get(i).getNombre().trim().equalsIgnoreCase(filtroNombre)
-					|| empleados.get(i).getApellidos().trim().equalsIgnoreCase(filtroNombre)) {
+			if (empleados.get(i).getNombre().trim().contains(filtroNombre)
+					|| empleados.get(i).getApellidos().trim().contains(filtroNombre)) {
 				auxEmpleados.add(empleados.get(i));
 			}
 
