@@ -51,8 +51,7 @@ public class Consola implements IEntradaSalida {
 		do {
 			try {
 				auxResultado = leerTexto("");
-				auxResultado.replace('.', ',');
-				resultado = Double.valueOf(auxResultado);
+				resultado = Double.valueOf(auxResultado.replace(',', '.'));
 				hayError = false;
 			} catch (Exception e) {
 
