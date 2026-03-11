@@ -1,6 +1,6 @@
 package app;
 
-public class Comercial extends Empleados {
+public class Comercial extends Empleado {
 	private double ventas;
 
 	public Comercial(String dni, String nombre, String apellidos, double sueldoBase, double ventas) {

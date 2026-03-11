@@ -1,6 +1,6 @@
 package app;
 
-public class Tecnico extends Empleados {
+public class Tecnico extends Empleado {
 
 	private int categoria;
 

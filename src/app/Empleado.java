@@ -1,12 +1,12 @@
 package app;
 
-public abstract class Empleados {
+public abstract class Empleado {
 	private String dni;
 	private String nombre;
 	private String apellidos;
 	private double sueldoBase;
 
-	public Empleados(String dni, String nombre, String apellidos, double sueldoBase) {
+	public Empleado(String dni, String nombre, String apellidos, double sueldoBase) {
 
 		this.dni = dni;
 		this.nombre = nombre;
