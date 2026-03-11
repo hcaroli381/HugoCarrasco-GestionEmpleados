@@ -10,8 +10,9 @@ public class Tecnico extends Empleado {
 	}
 
 	@Override
+
 	public double getSueldo() {
-		return (getsueldoBase() + categoria) * 100;
+		return (getsueldoBase() + (categoria * 100));
 	}
 
 }

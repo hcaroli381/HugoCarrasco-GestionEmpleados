@@ -55,7 +55,7 @@ public class Consola implements IEntradaSalida {
 				hayError = false;
 			} catch (Exception e) {
 
-				System.err.println("Error: Introduce un número decimal válido.");
+				imprimir("Error: Introduce un número decimal válido.");
 				sc.nextLine();
 
 			}

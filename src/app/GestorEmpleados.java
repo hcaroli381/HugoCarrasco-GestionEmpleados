@@ -26,6 +26,12 @@ public class GestorEmpleados {
 			case 4 -> consola.imprimirLinea("Hasta pronto!!");
 			default -> opcion = consola.leerEntero("Introduce una opción :");
 			}
+			// Lo he metido únicamente en contratar para que las listas se vean y no haya
+			// que subir tanto
+			if (opcion == 1) {
+				consola.limpiarPantalla();
+			}
+
 		} while (opcion != 4);
 	}
 
@@ -74,6 +80,9 @@ public class GestorEmpleados {
 		for (int i = 0; i < empleados.size(); i++) {
 			consola.imprimirLinea("N - " + empleados.get(i).getNombre() + " Apellidos : "
 					+ empleados.get(i).getApellidos() + " Sueldo : " + empleados.get(i).getSueldo() + "€");
+		}
+		if (empleados.isEmpty()) {
+			consola.imprimirLinea("Sin empleados que mostrar");
 		}
 	}
 
