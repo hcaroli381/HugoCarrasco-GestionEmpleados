@@ -44,8 +44,22 @@ public class Consola implements IEntradaSalida {
 
 	@Override
 	public double leerImporte(String mensaje) {
-		imprimirLinea(mensaje);
-		return sc.nextDouble();
+		imprimir(mensaje);
+		String auxResultado;
+		double resultado = 0.0;
+		boolean hayError = true;
+		do {
+			try {
+				auxResultado = leerTexto("");
+				auxResultado.replace('.', ',');
+				hayError = false;
+			} catch (Exception e) {
+				System.err.println("Error: Introduce un número decimal válido.");
+				sc.next();
+			}
+		} while (hayError);
+		return resultado;
+
 	}
 
 	@Override
